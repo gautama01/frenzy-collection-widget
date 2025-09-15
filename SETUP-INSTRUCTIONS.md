@@ -1,61 +1,61 @@
-# 🚀 Instrucciones de Configuración - Frenzy Widget
+# Frenzy Widget - Setup Instructions
 
-## ⚠️ Error Corregido: "storefront_token default cannot be blank"
+## Fixed Error: "storefront_token default cannot be blank"
 
-El error se ha solucionado eliminando el valor por defecto del token y agregando validación.
+The error was resolved by removing the default token value and adding validation.
 
-## 📋 Pasos de Instalación
+## Installation Steps
 
-### 1. **Subir Archivos a Shopify**
+### 1. Upload Files to Shopify
 
 ```
-sections/frenzy-widget.liquid  ← Copia desde frenzy-widget.liquid
-assets/widget.css              ← Copia desde dist/widget.css
-assets/widget.js               ← Copia desde dist/widget.js
-templates/collection.frenzy.json ← Copia desde collection.frenzy.json
+sections/frenzy-widget.liquid ← Copy from frenzy-widget.liquid
+assets/widget.css ← Copy from dist/widget.css
+assets/widget.js ← Copy from dist/widget.js
+templates/collection.frenzy.json ← Copy from collection.frenzy.json
 ```
 
-### 2. **Configurar el Token (REQUERIDO)**
+### 2. Configure the Token (REQUIRED)
 
-1. **Ve al Editor de Temas** en Shopify Admin
-2. **Selecciona tu tema** y haz clic en "Customize"
-3. **Ve a Collection pages**
-4. **Agrega la sección "Frenzy Collection Widget"**
-5. **Configura el campo "Storefront Access Token"** con tu token real
+1. Go to the Theme Editor in Shopify Admin  
+2. Select your theme and click "Customize"  
+3. Go to Collection pages  
+4. Add the section "Frenzy Collection Widget"  
+5. Configure the field "Storefront Access Token" with your real token  
 
-### 3. **Obtener Storefront Access Token**
+### 3. Get Storefront Access Token
 
-1. **Ve a Apps** en Shopify Admin
-2. **Crea una nueva app** o usa una existente
-3. **Configura Storefront API** con estos permisos:
-   - `unauthenticated_read_product_listings`
-   - `unauthenticated_read_product_inventory`
-   - `unauthenticated_read_product_tags`
-4. **Instala la app** y copia el Storefront access token
+1. Go to Apps in Shopify Admin  
+2. Create a new app or use an existing one  
+3. Configure Storefront API with these permissions:  
+   - `unauthenticated_read_product_listings`  
+   - `unauthenticated_read_product_inventory`  
+   - `unauthenticated_read_product_tags`  
+4. Install the app and copy the Storefront access token  
 
-## 🔧 Configuración del Widget
+## Widget Configuration
 
-### Campos Requeridos:
-- ✅ **Storefront Access Token** - Tu token de la Storefront API
+### Required Fields:
+- **Storefront Access Token** - Your Storefront API token  
 
-### Campos Opcionales:
-- **API Version** - `2024-04` (recomendado)
-- **Default Collection** - Colección por defecto
-- **Products per page** - 6-24 productos
-- **Desktop/Mobile columns** - Número de columnas
-- **Enable filters** - Activar/desactivar filtros
+### Optional Fields:
+- **API Version** - `2024-04` (recommended)  
+- **Default Collection** - Default collection  
+- **Products per page** - 6-24 products  
+- **Desktop/Mobile columns** - Number of columns  
+- **Enable filters** - Enable/disable filters  
 
-## 🎯 Validación Automática
+## Automatic Validation
 
-El widget ahora incluye validación automática:
+The widget now includes automatic validation:
 
-- ✅ **Si el token está configurado**: El widget funciona normalmente
-- ⚠️ **Si el token está vacío**: Muestra mensaje de configuración requerida
-- 🔧 **Instrucciones claras**: Te dice exactamente dónde configurar el token
+- **If the token is configured**: The widget works normally  
+- **If the token is empty**: A configuration required message is shown  
+- **Clear instructions**: It tells you exactly where to configure the token  
 
-## 📱 Mensaje de Configuración
+## Configuration Message
 
-Si no configuras el token, verás:
+If you do not configure the token, you will see:
 
 ```
 ⚠️ Configuration Required
@@ -63,32 +63,32 @@ Please configure the Storefront Access Token in the theme editor.
 Go to Customize → Collection pages → Frenzy Collection Widget → Storefront Access Token
 ```
 
-## 🚀 Listo para Usar
+## Ready to Use
 
-Una vez configurado el token:
+Once the token is configured:
 
-1. **El widget se carga automáticamente**
-2. **Muestra productos de la colección actual**
-3. **Filtros y ordenamiento funcionan**
-4. **Scroll infinito activo**
-5. **Diseño responsivo**
+1. The widget loads automatically  
+2. Displays products from the current collection  
+3. Filters and sorting work  
+4. Infinite scroll is active  
+5. Responsive design  
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
-### Widget no se carga:
-- Verifica que el Storefront Access Token esté configurado
-- Revisa la consola del navegador para errores
-- Asegúrate de que los archivos estén subidos correctamente
+### Widget does not load:
+- Verify that the Storefront Access Token is configured  
+- Check the browser console for errors  
+- Make sure the files are uploaded correctly  
 
-### No aparecen productos:
-- Verifica que la colección tenga productos
-- Revisa los permisos de la Storefront API
-- Verifica que la colección sea pública
+### No products appear:
+- Verify that the collection has products  
+- Check Storefront API permissions  
+- Make sure the collection is public  
 
-## ✅ Archivos Listos
+## Final Notes
 
-Todos los archivos están listos y el error de configuración está corregido. Solo necesitas:
+All files are ready and the configuration error is fixed. You just need to:
 
-1. **Subir los archivos** a Shopify
-2. **Configurar el token** en el editor de temas
-3. **¡Listo para usar!**
+1. Upload the files to Shopify  
+2. Configure the token in the theme editor  
+3. Done! Ready to use  
