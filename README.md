@@ -10,6 +10,18 @@ A React + TypeScript widget for Shopify collection pages that provides advanced 
 - **Responsive Design**: Works on desktop and mobile devices
 - **Product Cards**: Display product title, price, image with click-through to product pages
 
+  ## Live Preview
+- **URL:** https://essential-ayrton.myshopify.com/collections/automated-collection  
+- **Password:** **thaoly** (6 characters, no spaces)
+
+## Alignment with the Assessment
+- **Goal:** Build a search & filter widget for Shopify **collection pages**.
+- **Where it runs:** A normal **Shopify Liquid** store (the widget renders products client-side; no Liquid product loops).
+- **Components delivered:** 2 filters (**Brand** and **Product Type**), **continuous scroll**, **price sort (Low→High / High→Low)**, and a **product card** (Title, Price, Image, click-through).
+- **Data source:** **Shopify Storefront GraphQL API**.
+- **Build:** **Vite + React + TypeScript**; installed and tested on a **Shopify Dev Store** (see preview above).
+- **Context (from brief):** Built to support an AI-driven discovery experience; the widget is designed to integrate with intelligent ranking/filtering pipelines by composing precise Storefront queries.
+
 ## Setup
 
 ### 1. Environment Variables
