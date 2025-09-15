@@ -1,0 +1,34 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    },
+    "frenzy-widget": {
+      "type": "frenzy-widget",
+      "settings": {
+        "storefront_token": "",
+        "api_version": "2024-04",
+        "default_collection": "",
+        "show_loading_message": true,
+        "loading_text": "Loading products...",
+        "products_per_page": 12,
+        "enable_brand_filter": true,
+        "enable_type_filter": true,
+        "enable_price_sort": true,
+        "desktop_columns": "4",
+        "mobile_columns": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "frenzy-widget"
+  ]
+}

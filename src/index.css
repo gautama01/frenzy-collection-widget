@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Widget-specific styles - minimal interference with host page */
+#frenzy-collection-widget {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  color: #1f2937;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none; /* full width */
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Ensure CSS file is always emitted (non-purgeable anchor rule) */
+.frenzy-css-anchor { display: block; }
+
+#frenzy-collection-widget *,
+#frenzy-collection-widget *::before,
+#frenzy-collection-widget *::after {
+  box-sizing: border-box;
+}
+
+#frenzy-collection-widget a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+#frenzy-collection-widget a:hover {
+  color: #1d4ed8;
+}
+
+#frenzy-collection-widget button {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#frenzy-collection-widget button:hover {
+  border-color: #9ca3af;
+  background-color: #f9fafb;
+}
+
+#frenzy-collection-widget button:focus,
+#frenzy-collection-widget button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+#frenzy-collection-widget select {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+#frenzy-collection-widget select:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-color: #3b82f6;
+}
+
+/* Ensure product grid is visible */
+#frenzy-collection-widget .grid {
+  display: grid !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#frenzy-collection-widget .grid > * {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force visibility for product cards */
+#frenzy-collection-widget a {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Ensure images are visible */
+#frenzy-collection-widget img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Clean production styles */
+#frenzy-collection-widget .grid {
+  gap: 1.5rem;
+}
+
+#frenzy-collection-widget a {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#frenzy-collection-widget a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

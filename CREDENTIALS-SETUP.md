@@ -1,0 +1,3 @@
+- Generate a **Storefront access token** in your Shopify store (Develop apps → Storefront API).
+- Do **not** commit real tokens to the repository.
+- In production, the widget reads config from the Liquid section via `data-*` / `window.__FRENZY_CONFIG__`.

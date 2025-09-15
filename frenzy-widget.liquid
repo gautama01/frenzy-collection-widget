@@ -1,0 +1,127 @@
+{% comment %}
+  Frenzy Collection Widget Section
+  - Renderiza un contenedor con data-* para configurar el widget
+  - Permite “All Products” cuando no hay colección por defecto y se ignora la colección de la página
+{% endcomment %}
+
+<div
+  id="frenzy-collection-widget"
+  data-domain="{{ shop.permanent_domain }}"
+  data-collection-handle="{{ collection.handle | default: '' }}"
+  data-default-collection="{{ section.settings.default_collection.handle | default: '' }}"
+  data-sf-token="{{ section.settings.storefront_token | escape }}"
+  data-api-version="{{ section.settings.api_version | default: '2024-04' }}"
+  data-per-page="{{ section.settings.products_per_page }}"
+  data-enable-brand="{{ section.settings.enable_brand_filter }}"
+  data-enable-type="{{ section.settings.enable_type_filter }}"
+  data-enable-price-sort="{{ section.settings.enable_price_sort }}"
+  data-ignore-page="{{ section.settings.ignore_page_collection }}"
+>
+  {% if section.settings.show_loading_message %}
+    <div class="frenzy-loading" style="padding: 2rem; text-align: center; color: #666;">
+      <p>{{ section.settings.loading_text | default: 'Loading products...' }}</p>
+    </div>
+  {% endif %}
+</div>
+
+{{ 'widget.css' | asset_url | stylesheet_tag }}
+
+<script>
+  // Config para shopifyFetch en runtime (sin .env)
+  window.__FRENZY_CONFIG__ = {
+    VITE_SHOPIFY_DOMAIN: "{{ shop.permanent_domain }}",
+    VITE_STOREFRONT_TOKEN: "{{ section.settings.storefront_token | escape }}",
+    VITE_API_VERSION: "{{ section.settings.api_version | default: '2024-04' }}"
+  };
+</script>
+
+<script src="{{ 'widget.js' | asset_url }}" defer></script>
+
+<noscript>
+  <div style="padding: 2rem; text-align: center; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;">
+    <p>JavaScript is required for the Frenzy Collection Widget to function properly.</p>
+  </div>
+</noscript>
+
+{% schema %}
+{
+  "name": "Frenzy Collection Widget",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "header", "content": "Widget Configuration" },
+    {
+      "type": "text",
+      "id": "storefront_token",
+      "label": "Storefront Access Token",
+      "info": "Your Shopify Storefront API access token (required)"
+    },
+    {
+      "type": "text",
+      "id": "api_version",
+      "label": "API Version",
+      "info": "Shopify API version (default: 2024-04)",
+      "default": "2024-04"
+    },
+    {
+      "type": "collection",
+      "id": "default_collection",
+      "label": "Default Collection",
+      "info": "If empty and 'Ignore page collection' is enabled, the widget shows ALL products."
+    },
+    {
+      "type": "checkbox",
+      "id": "ignore_page_collection",
+      "label": "Ignore page collection when no Default Collection is selected (show All Products)",
+      "default": true
+    },
+
+    { "type": "header", "content": "Display Settings" },
+    {
+      "type": "checkbox",
+      "id": "show_loading_message",
+      "label": "Show loading message",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "loading_text",
+      "label": "Loading text",
+      "default": "Loading products...",
+      "info": "Text to show while the widget is loading"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 6, "max": 24, "step": 6,
+      "default": 12
+    },
+
+    { "type": "header", "content": "Filter Settings" },
+    { "type": "checkbox", "id": "enable_brand_filter", "label": "Enable brand filter", "default": true },
+    { "type": "checkbox", "id": "enable_type_filter", "label": "Enable product type filter", "default": true },
+    { "type": "checkbox", "id": "enable_price_sort", "label": "Enable price sorting", "default": true },
+
+    { "type": "header", "content": "Section Settings" },
+    {
+      "type": "range", "id": "padding_top",
+      "min": 0, "max": 100, "step": 4, "unit": "px",
+      "label": "Top padding", "default": 36
+    },
+    {
+      "type": "range", "id": "padding_bottom",
+      "min": 0, "max": 100, "step": 4, "unit": "px",
+      "label": "Bottom padding", "default": 36
+    }
+  ],
+  "presets": [{ "name": "Frenzy Collection Widget" }]
+}
+{% endschema %}
+
+<style>
+  .section {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frenzy Widget Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+        .error {
+            background: #ffebee;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #f44336;
+            color: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Frenzy Collection Widget Test</h1>
+        
+        <div class="instructions">
+            <h3>Setup Instructions:</h3>
+            <ol>
+                <li>Create a <code>.env</code> file in the project root with your Shopify credentials:</li>
+                <pre>VITE_SHOPIFY_DOMAIN=your-shop.myshopify.com
+VITE_STOREFRONT_TOKEN=your-storefront-access-token
+VITE_API_VERSION=2024-04</pre>
+                <li>Run <code>npm run build</code> to build the widget</li>
+                <li>Copy the built files from <code>dist/</code> to your web server</li>
+                <li>Include the widget CSS and JS files in your page</li>
+            </ol>
+        </div>
+
+        <div id="env-check" class="error" style="display: none;">
+            <strong>Environment Variables Missing:</strong> Please set up your .env file with VITE_SHOPIFY_DOMAIN and VITE_STOREFRONT_TOKEN
+        </div>
+
+        <h2>Widget Test</h2>
+        <p>This is a test of the Frenzy Collection Widget. The widget should render below:</p>
+        
+        <!-- Widget container -->
+        <div id="frenzy-collection-widget" data-collection-handle="best-sellers-this-week">
+            <div style="padding: 20px; text-align: center; color: #666;">
+                Loading widget...
+            </div>
+        </div>
+
+        <h3>Integration Code for Shopify Liquid:</h3>
+        <pre><code>&lt;!-- Include the widget CSS --&gt;
+&lt;link rel="stylesheet" href="path/to/widget.css"&gt;
+
+&lt;!-- Widget container --&gt;
+&lt;div id="frenzy-collection-widget" data-collection-handle="{{ collection.handle }}"&gt;&lt;/div&gt;
+
+&lt;!-- Include the widget JS --&gt;
+&lt;script src="path/to/widget.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+
+    <!-- Include the built widget files -->
+    <link rel="stylesheet" href="dist/widget.css">
+    <script src="config.js"></script>
+    <script src="dist/widget.js"></script>
+
+    <script>
+        // Check if environment variables are available (for development)
+        if (typeof import !== 'undefined' && import.meta && import.meta.env) {
+            if (!import.meta.env.VITE_SHOPIFY_DOMAIN || !import.meta.env.VITE_STOREFRONT_TOKEN) {
+                document.getElementById('env-check').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
