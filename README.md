@@ -140,7 +140,7 @@ The widget includes console logging for debugging. Check the browser console for
 
 ### Trade-offs
 
-- **React + TypeScript with hooks** (no global state lib) → simpler, smaller bundle
+-**React + TypeScript with hooks** (no global state lib) → simpler, smaller bundle
 
 -**Runtime configuration from Liquid** (data-* + window.__FRENZY_CONFIG__) → avoids bundling secrets
 
