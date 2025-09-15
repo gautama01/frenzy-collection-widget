@@ -140,10 +140,15 @@ The widget includes console logging for debugging. Check the browser console for
 
 ### Trade-offs
 
-- **No state management library**: Uses React hooks for simplicity
-- **No GraphQL client**: Direct fetch calls for minimal bundle size
-- **Scoped CSS**: Prevents style conflicts but requires careful CSS management
-- **Widget approach**: Self-contained but requires manual integration
+- **React + TypeScript with hooks** (no global state lib) → simpler, smaller bundle
+
+-**Runtime configuration from Liquid** (data-* + window.__FRENZY_CONFIG__) → avoids bundling secrets
+
+-**Minimal, responsive UI** designed to blend with themes; Tailwind optional
+
+-**Explicit error messages** to speed up debugging in the Theme Editor
+
+-**Widget approach**: Self-contained but requires manual integration
 
 ## Browser Support
 
