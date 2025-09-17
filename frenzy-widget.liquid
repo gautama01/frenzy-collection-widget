@@ -1,7 +1,7 @@
 {% comment %}
   Frenzy Collection Widget Section
-  - Renderiza un contenedor con data-* para configurar el widget
-  - Permite “All Products” cuando no hay colección por defecto y se ignora la colección de la página
+  - Renders a container with data-* attributes to configure the widget
+  - Allows "All Products" when no default collection is set and page collection is ignored
 {% endcomment %}
 
 <div
@@ -18,16 +18,18 @@
   data-ignore-page="{{ section.settings.ignore_page_collection }}"
 >
   {% if section.settings.show_loading_message %}
+    <!-- Loading message shown before products are fetched -->
     <div class="frenzy-loading" style="padding: 2rem; text-align: center; color: #666;">
       <p>{{ section.settings.loading_text | default: 'Loading products...' }}</p>
     </div>
   {% endif %}
 </div>
 
+<!-- Widget styles -->
 {{ 'widget.css' | asset_url | stylesheet_tag }}
 
 <script>
-  // Config para shopifyFetch en runtime (sin .env)
+  // Runtime config for shopifyFetch (no .env needed in Shopify)
   window.__FRENZY_CONFIG__ = {
     VITE_SHOPIFY_DOMAIN: "{{ shop.permanent_domain }}",
     VITE_STOREFRONT_TOKEN: "{{ section.settings.storefront_token | escape }}",
@@ -35,9 +37,11 @@
   };
 </script>
 
+<!-- Main widget bundle -->
 <script src="{{ 'widget.js' | asset_url }}" defer></script>
 
 <noscript>
+  <!-- Fallback message for users with JavaScript disabled -->
   <div style="padding: 2rem; text-align: center; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;">
     <p>JavaScript is required for the Frenzy Collection Widget to function properly.</p>
   </div>
@@ -50,6 +54,7 @@
   "class": "section",
   "settings": [
     { "type": "header", "content": "Widget Configuration" },
+
     {
       "type": "text",
       "id": "storefront_token",
@@ -72,11 +77,13 @@
     {
       "type": "checkbox",
       "id": "ignore_page_collection",
-      "label": "Ignore page collection when no Default Collection is selected (show All Products)",
+      "label": "Ignore page collection",
+      "info": "If Default Collection is empty, show All Products.",
       "default": true
     },
 
     { "type": "header", "content": "Display Settings" },
+
     {
       "type": "checkbox",
       "id": "show_loading_message",
@@ -88,7 +95,7 @@
       "id": "loading_text",
       "label": "Loading text",
       "default": "Loading products...",
-      "info": "Text to show while the widget is loading"
+      "info": "Text shown while the widget is loading"
     },
     {
       "type": "range",
@@ -99,20 +106,26 @@
     },
 
     { "type": "header", "content": "Filter Settings" },
+
     { "type": "checkbox", "id": "enable_brand_filter", "label": "Enable brand filter", "default": true },
     { "type": "checkbox", "id": "enable_type_filter", "label": "Enable product type filter", "default": true },
     { "type": "checkbox", "id": "enable_price_sort", "label": "Enable price sorting", "default": true },
 
     { "type": "header", "content": "Section Settings" },
+
     {
-      "type": "range", "id": "padding_top",
+      "type": "range",
+      "id": "padding_top",
       "min": 0, "max": 100, "step": 4, "unit": "px",
-      "label": "Top padding", "default": 36
+      "label": "Top padding",
+      "default": 36
     },
     {
-      "type": "range", "id": "padding_bottom",
+      "type": "range",
+      "id": "padding_bottom",
       "min": 0, "max": 100, "step": 4, "unit": "px",
-      "label": "Bottom padding", "default": 36
+      "label": "Bottom padding",
+      "default": 36
     }
   ],
   "presets": [{ "name": "Frenzy Collection Widget" }]
@@ -120,6 +133,7 @@
 {% endschema %}
 
 <style>
+  /* Apply dynamic top/bottom padding from settings */
   .section {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
